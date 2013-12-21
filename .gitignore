@@ -43,8 +43,8 @@ local.properties
 
 # Build results
 
-#[Dd]ebug/
-#[Rr]elease/
+SDL_Sprite_Animation/[Dd]ebug/
+SDL_Sprite_Animation/[Rr]elease/
 #x64/
 #build/
 #[Bb]in/
