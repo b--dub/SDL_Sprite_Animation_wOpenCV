@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
 	Sprite* sprites[] = {&pufferfish, &bubblefish, &jumpfish, &cuttlefish, &spongebob, &patrick};
 	
 	//  Initial LOAD, FLIP, 2GRAY, and CLONE
-	cap >> matWebcam;
+	cap >> matWebcam;cap >> matWebcam;cap >> matWebcam;cap >> matWebcam;cap >> matWebcam;cap >> matWebcam;
 	flip(matWebcam, matWebcam, 1);
 	background = LoadMatImage(&matWebcam);  // format mat to SDL_Texture & assign to background
 	cvtColor(matWebcam, matGray, CV_BGR2GRAY);	// copy live frame to grayscale
@@ -84,12 +84,14 @@ int main(int argc, char* argv[]) {
 					SDL_SetWindowFullscreen(window, fullscreen ^= 1);
 					break;
 				case SDLK_m:
-					showMatMotion ^= 1;
-					if (showMatMotion) {
-						cv::namedWindow(WIN_MOTION, CV_WINDOW_AUTOSIZE);
-						cv::moveWindow(WIN_MOTION, 645, 440);
+					if (!fullscreen) {
+						showMatMotion ^= 1;
+						if (showMatMotion) {
+							cv::namedWindow(WIN_MOTION, CV_WINDOW_AUTOSIZE);
+							cv::moveWindow(WIN_MOTION, 645, 440);
+						}
+						else cv::destroyWindow(WIN_MOTION);
 					}
-					else cv::destroyWindow(WIN_MOTION);
 					break;
 					
 				case SDLK_c:
